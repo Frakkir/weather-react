@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import { useState } from "react";
 import './App.css';
-import Weather from "./Weather";
+import Search from './Search';
+import CurrentTemperature from './CurrentTemperature';
+import HumidityWind from './HumidityWind';
+import Forecast from './Forecast';
+import Footer from './Footer';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-function App() {
+function App () {
+   let [city, setCity] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Weather city="Olathe" />
-      </header>
+     <div className="App">
+      <div className="container">
+        <div className="weather-app-wrapper">
+          <Search city={city} setCity={setCity}/>
+          <CurrentTemperature />
+          <HumidityWind />
+          <Forecast />
+          <Footer />
+        </div>
+      </div>
     </div>
   );
 }
