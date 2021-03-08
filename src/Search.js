@@ -40,7 +40,8 @@ export default function Search({ city, setCity }) {
             autofocus="on"
             autocomplete="off"
             id="city-input"
-            className="form-control shadow-sm"
+                          className="form-control shadow-sm"
+                          onChange={updateCity}
           />
         </div>
         <div className="col-3">

@@ -1,8 +1,6 @@
 import React from "react";
 import ReactAnimatedWeather from "react-animated-weather";
 
-function formatHours(time) {}
-
 export default function ForecastItem() {
   return (
     <div className="col-2">
