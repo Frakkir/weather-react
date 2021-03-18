@@ -6,6 +6,14 @@
   margin: 0;
 }
 
+.App {
+  border: 1px solid #afb0b4;
+   margin: 30px auto;
+   padding: 20px;
+   max-width: 600px;
+   border-radius: 6%;
+}
+
 body {
   font-family: arial, sans-serif;
 }
@@ -38,8 +46,6 @@ body {
 .App .weather-app {
   margin: 30px auto;
   padding: 20px;
-  border: 1px solid lightgray;
-  border-radius: 5px;
   max-width: 600px;
 }
 

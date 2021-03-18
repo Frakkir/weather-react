@@ -9,13 +9,14 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 function App () {
    let [city, setCity] = useState("");
+    let [weather, setWeather] = useState({temperature:0});
 
   return (
      <div className="App">
       <div className="container">
         <div className="weather-app-wrapper">
-          <Search city={city} setCity={setCity}/>
-          <CurrentTemperature />
+          <Search setCity={setCity} setWeather={setWeather} />
+          <CurrentTemperature city={city} weather={weather} />
           <HumidityWind />
           <Forecast />
           <Footer />

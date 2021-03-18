@@ -1,21 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export default function Search({ city, setCity }) {
+export default function Search({ setCity, setWeather }) {
   let [localCity, setlocalCity] = useState("");
-  let [loaded, setLoaded] = useState(false);
-    let [weather, setWeather] = useState({});
     
   function handleSubmit(event) {
     event.preventDefault();
     setCity(localCity);
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${localCity}&appid=f1f501c888b4b930b3a7e076cecf3a88`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${localCity}&appid=f1f501c888b4b930b3a7e076cecf3a88&units=metric`;
     axios.get(apiUrl).then(displayWeather);
   }
 
-  function displayWeather(response) {
-    setLoaded(true);
-
+  function displayWeather (response) {  
     setWeather({
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
@@ -29,8 +25,9 @@ export default function Search({ city, setCity }) {
     setlocalCity(event.target.value);
   }
 
-  let form = (
-    <form className="weather-app" id="search-form" onSubmit={handleSubmit}>
+    return (
+      <div>
+         <form className="weather-app" id="search-form" onSubmit={handleSubmit}>
     <div className="search-form">
       <div className="row">
         <div className="col-9">
@@ -39,9 +36,9 @@ export default function Search({ city, setCity }) {
             placeholder="Type a city..."
             autofocus="on"
             autocomplete="off"
-            id="city-input"
-                          className="form-control shadow-sm"
-                          onChange={updateCity}
+                  id="city-input"
+                  className="form-control shadow-sm"
+                  onChange={updateCity}
           />
         </div>
         <div className="col-3">
@@ -51,31 +48,9 @@ export default function Search({ city, setCity }) {
             className="form-control btn btn-primary shadow-sm"
           />
         </div>
-        <div>
-          <button id="currentButton">Current</button>
-        </div>
       </div>
     </div>
   </form>
-  );
-
-  if (loaded) {
-    return (
-      <div>
-        {form}
-        <ul>
-          <li>Temperature: {Math.round(weather.temperature)} C </li>
-          <li> Description: {weather.description}</li>
-          <li>Humidity: {weather.humidity}% </li>
-          <li>Wind: {weather.temperature} km/h </li>
-          <li>
-            {" "}
-            <img src={weather.icon} alt="weather icon" />
-          </li>
-        </ul>
       </div>
     );
-  } else {
-    return form;
-  }
 }
