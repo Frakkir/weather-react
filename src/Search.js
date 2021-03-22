@@ -28,7 +28,8 @@ export default function Search({ setCity, setWeather }) {
     return (
       <div>
          <form className="weather-app" id="search-form" onSubmit={handleSubmit}>
-    <div className="search-form">
+          <div className="search-form">
+            
       <div className="row">
         <div className="col-9">
           <input

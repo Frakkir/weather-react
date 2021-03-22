@@ -1,14 +1,15 @@
 import React from "react";
 
-export default function HumidityWind() {
+export default function HumidityWind ({ humidity, wind }) {
+  
   return (
     <div className="col-6">
       <ul>
         <li>
-          Humidity: <span id="humidity">77</span>%
+          Humidity: <span id="humidity">{humidity}</span>%
         </li>
         <li>
-          Wind: <span id="windSpeed">8</span> km/h
+          Wind: <span id="windSpeed">{Math.round(wind)}</span> km/h
         </li>
       </ul>
     </div>

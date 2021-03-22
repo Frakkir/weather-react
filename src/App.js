@@ -15,10 +15,16 @@ function App () {
      <div className="App">
       <div className="container">
         <div className="weather-app-wrapper">
+          <h1>
+              Search weather by city
+            </h1>
           <Search setCity={setCity} setWeather={setWeather} />
+          {city &&
+            <>
           <CurrentTemperature city={city} weather={weather} />
-          <HumidityWind />
-          <Forecast />
+          <HumidityWind humidity={weather.humidity} wind={weather.wind}/>
+            <Forecast city={city} />
+          </>}
           <Footer />
         </div>
       </div>
